@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honkai Impact 2 Introduction</title>
+    <link rel="stylesheet" href="~/Content/index/index.css">
+</head>
+<body>
+    <header>
+        <h1>Honkai Impact 2</h1>
+        <nav>
+            <ul>
+                <li><a href="https://www.benghuai.com/">Official website center</a></li>
+                <li><a href="https://static.benghuai.com/Download/v10_5/Original.StripResource_10.5.8_317.uvx.shell.apk">Download center</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="search...">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="image-links">
+        <!-- 点击图片跳转到介绍页 -->
+        <a href="https://localhost:44310/jieshao/index" target="_blank">
+            <img src="~/Content/index/index1.png" alt="游戏介绍" />
+        </a>
+
+        <!-- 点击图片跳转到角色页 -->
+        <a href="https://localhost:44310/juese/index" target="_blank">
+            <img src="~/Content/index/index2.png" alt="角色图片" class="character-image">
+        </a>
+
+        <!-- 点击图片跳转到游戏玩法页 -->
+        <a href="https://localhost:44310/zhuangbei/index">
+            <img src="~/Content/index/index3.png" alt="游戏玩法" />
+        </a>
+    </div>
+
+    <p></p>
+    <p></p>
+
+    <section id="introduction">
+        <h2> <i>game introduction</i> </h2>
+        <p>The collapse of the world is a cyclical phenomenon that occurs every few hundred years.</p>
+        <p></p>
+        <p>The manifestations of collapse are elusive: wars, epidemics, climate catastrophes, comet strikes, and even the arrival of giant soldiers are all possible. According to the interpretation of the books, it can only be said that the will of God can not be guessed. But the result would be a massive destruction of the species that dominate the world.</p>
+        <p></p>
+        <p>As early as the previous collapse occurred, some people began to study the causes and mechanisms of the collapse, and tried to study the cyclical law of the collapse.</p>
+        <p></p>
+        <p>Accompanied by the collapse is the distortion of the rules of the world, which on the one hand causes the destruction of the world and the emergence of disasters. On the other hand, if you learn to use this distortion, you can gain the ability to transcend common sense during the collapse, and you can gain great strength to survive.</p>
+        <p></p>
+        <p>The selected players are the ones who know how to do this.</p>
+    </section>
+
+    <video width="640" height="400" controls autoplay>  <source src="~/Content/index/1274086333-1-16.mp4" type="video/mp4"> </video>
+
+
+    <footer>
+        <p>版权所有 © 2023 崩坏学园2. 保留所有权利。</p>
+    </footer>
+</body>
+</html>

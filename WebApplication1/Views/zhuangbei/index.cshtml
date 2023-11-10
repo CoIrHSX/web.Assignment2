@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏装备展示</title>
+    <style>
+        .equipment-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .equipment-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+ rect 
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .page-item {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+            .page-item.active {
+                background-color: #007bff;
+                color: white;
+                border-color: #007bff;
+            }
+
+        .page-name {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <p><strong>Five common configurations</strong></p>
+
+    <p></p>
+
+    <h1 class="page-name" id="page-name"></h1>
+    <div id="equipment-container" class="equipment-list"></div>
+    <div class="pagination" id="pagination-container"></div>
+
+    <script>
+        const equipments = [
+            { name: '歼星舰埃塞克斯', description: '主炮对前方大范围目标造成400(500)%武器攻击力伤害，舰载机自动寻找主炮半径1500范围内的敌人快速射击，造成20(25)%武器攻击力伤害' },
+            { name: '希露的小小心愿', description: '使用后，提升40(50)%移速，持续10秒，并尽可能必要地对所有敌人施加“希露希露”效果，持续4秒' },
+            { name: '幻化成风', description: '携带2件及以上相同神系的武器时，提升50(65)%武器攻击力；携带2件相同神系的服装时，提升50(65)%攻速；携带2件及以上相同神系的徽章时，提升50(65)%全伤害' },
+            { name: 'Seele的玩具箱', description: '放置后，随机展开一种同等级炮台，攻击力为原型炮台的160(225)%，持续12秒' },
+            { name: '重音之核·Ⅸ', description: '自动瞄准并锁定前方30度内的目标射击，场上每有一个炮台类武器攻速增加35(50)%，最多增加400(550)%' },
+            { name: '神曲·群星', description: '使用后，将角色生命值献祭到1，每因此损失1%生命值，回复1%全弹药，冷却30秒；使用后，提升175(225)%全伤害，120(150)%喷雾类武器造成的伤害，持续3秒' },
+            { name: '罗生门·夜色无尽', description: '仅携带喷雾类武器时，使用喷雾类武器时不消耗弹药，喷雾-激活类武器每0.1秒回复100%弹药，喷雾类武器每有1枚弹药上限提升1.1(1.4)%该武器造成的伤害，上限计算1000枚' },
+            { name: '活力之瓶·Ⅴ', description: '使用后，生成一团能量球自动追踪敌人，对半径200范围内敌人每秒造成300(480)%武器攻击力伤害，持续8秒' },
+            { name: '夜光杯', description: '使用武器时，自动使用一次非手持的随机喷雾类武器（不消耗弹药），并提升10(12)%全伤害，持续1(2)秒，可叠20层' },
+            { name: '次元干涉', description: '使用后生成1个虚空指令，持续4秒，虚空指令每秒对半径500范围内所有敌人造成120(150)%武器攻击力伤害，500码内每存在1个其它虚空指令，额外造成1次伤害，最多计入3个' },
+            { name: '红贽人形', description: '放置后直线前进，只能被角色攻击引爆，与角色每相距40(30)码，增加50(70)%伤害' },
+            { name: '核爆人形·最大当量', description: '放置后直线前进，触敌或走到屏幕边缘时爆炸，对半径300码内的目标造成180(230)%武器攻击力伤害，并使其减速，降低80%移速，且该武器对其造成的伤害提升100(130)%，持续1秒' },
+            { name: '反摸鱼秒表', description: '使用芙兰角色时，激活提升200(250)%放置-人形类武器攻击力，提升200(250)%放置-人形类武器造成的伤害' },
+            { name: '聚光音乐会', description: '角色携带的爆炸类人形爆炸或消亡后，清除全场放置-人形类武器残响，每清除1个提升40(55)%放置-人形类武器造成的伤害，可叠300层，持续10秒' },
+            { name: '吟游舞会', description: '场上的人形提升100(120)%移速，角色半径300范围存在人形时，提升40(50)%移速' },
+            { name: '祈愿花祝', description: '若直接砸中则使敌人陷入脆弱和减速状态，受到伤害提升100(130)%，移速减少80(95)%，持续10秒' },
+            { name: '东方快车·血之泵', description: '击中敌人后，提升12(15)%移速，17.5(20)%该武器攻速，上限叠加10层，持续3秒，叠加至上限后提升50%该武器落地和弹跳速度' },
+            { name: '灾祸之兽', description: '携带空想神话系列武器时，缩短35%赋予技能冷却时间，提升440(560)%空想神话系列武器造成的伤害' },
+            { name: '维达的秘语·闇', description: '弹跳和爆炸时，产生一个迷幻区域，区域内所有玩家全伤害提升100(125)%，移速提升88.6%，攻速提升30(40)%，每点亲密度提升0.5(0.7)%减伤，区域持续8(11)秒' },
+            { name: 'Diva', description: '携带D·A·L系武器或仅携带相同大类的武器时，提升90(120)%攻速，350(450)%武器攻击力，增加100%载弹量' },
+
+        ];
+
+        const itemsPerPage = 5; 
+        let currentPage = 1; 
+
+
+        const pageNames = [
+            'Libra set',
+            'Aries suit',
+            'Virgo suit',
+            'Scorpio suit'
+        ];
+
+        function displayEquipments(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const itemsToShow = equipments.slice(start, end);
+
+            const container = document.getElementById('equipment-container');
+            container.innerHTML = ''; 
+
+            itemsToShow.forEach(item => {
+                const equipmentItem = document.createElement('div');
+                equipmentItem.className = 'equipment-item';
+                equipmentItem.innerHTML = `
+
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+            `;
+                container.appendChild(equipmentItem);
+            });
+
+
+            const pageNameElement = document.getElementById('page-name');
+            pageNameElement.textContent = pageNames[page - 1];
+        }
+
+        function setupPagination(totalItems, itemsPerPage) {
+            const pageCount = Math.ceil(totalItems / itemsPerPage);
+            const paginationContainer = document.getElementById('pagination-container');
+            paginationContainer.innerHTML = ''; 
+
+
+            for (let i = 1; i <= pageCount; i++) {
+                const pageItem = document.createElement('span');
+                pageItem.className = 'page-item';
+                pageItem.innerText = i;
+                if (i === currentPage) {
+                    pageItem.classList.add('active');
+                }
+                pageItem.addEventListener('click', () => {
+                    currentPage = i;
+                    displayEquipments(currentPage);
+                    setupPagination(totalItems, itemsPerPage);
+                });
+                paginationContainer.appendChild(pageItem);
+            }
+        }
+
+        displayEquipments(currentPage);
+        setupPagination(equipments.length, itemsPerPage);
+
+    </script>
+    <footer>
+        <p>版权所有 © 2023 崩坏学园2. 保留所有权利。</p>
+    </footer>
+</body>
+</html>

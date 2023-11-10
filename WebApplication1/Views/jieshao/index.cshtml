@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "jieshao Page";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>崩坏学园2 官方网站</title>
+
+    <style>
+
+
+        header {
+            background-color: cornflowerblue;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        #game-introduction img {
+            display: block;
+            margin: 0 auto; 
+            max-width: 100%; 
+            height: auto; 
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #cc0000;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        article {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 5px 0;
+        }
+
+            .scroll-container::-webkit-scrollbar {
+                width: 3px;
+            }
+
+            .scroll-container::-webkit-scrollbar-thumb {
+                background: #888;
+            }
+
+                .scroll-container::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+
+            .scroll-container article {
+                flex: 0 0 50%;
+                box-sizing: border-box;
+                margin-right: 20px;
+                padding: 0 10px;
+            }
+
+                .scroll-container article img {
+                    width: 100%;
+                    height: auto;
+                }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Honkai Impact 2</h1>
+    </header>
+
+    <section id="game-introduction">
+        <h2>Game introduction</h2>
+        <img src="~/Content/jieshao/jieshao1.jpg" alt="崩坏学园御三家" />
+        <p>Honkai Impact 2 is a 2D horizontal shooter game produced and published by Miha Technology (Shanghai) Co., LTD., which was released on January 26, 2014.</p>
+        <p>The theme of the game is "collapse", telling a story about the "collapse" around "thousand Yu Gakuen", and deeply exploring the source of the "collapse".</p>
+        <p>
+            Hi hi! Welcome to New Changkong City~
+            Here are the most simple folk customs, the most intense friendship~
+            You can make friends with the mysterious Akulia, and you can meet Laniette with a long name~
+            Look for Karin if you like sports, and leave Tiara alone if you like to stay at home~。
+        </p>
+
+    </section>
+
+    <section id="game-map">
+        <h2>Overworld</h2>
+        <img src="~/Content/jieshao/jieshao2.jpg" alt="崩坏学园2地图" />
+        <p>
+            The scene map includes Gakuen City and its surrounding areas. After completing a task in a scene, the next scene can be automatically unlocked.
+        </p>
+        <p> Chiha Gakuen, where Kiana is located, is located in a large Gakuen city on the outskirts of the city. There are six famous high schools, ten universities and research institutes, where hundreds of thousands of students and staff live. </p>
+        <p>
+            The game has a total of forty-six plot maps, copies to cooperate with the plot, and the mode of crossing and peerless to choose from, after completing a map perfectly, you can receive clearance rewards at the task list in the lower right corner of the map (only new and inheritance).
+        </p>
+
+    </section>
+
+    <section id="game-img">
+        <h2>Game screen</h2>
+        <img src="~/Content/jieshao/jieshao3.jpg" alt="崩坏学园2地图" />
+    </section>
+
+        <section id="character-introduction">
+            <h2>characters intro</h2>
+
+            <article>
+                <h3>New protagonist for a new story</h3>
+                <img style="width:100%" src="~/Content/jieshao/jieshao10.jpg" alt="游戏主角" />
+                <p>
+                    ——There was this vague feeling that this was going to be some kind of dreamy moment.
+                    "Honkai Impact" New plot chapter - "Farewell to the Sky"
+                </p>
+            </article>
+
+        </section>
+
+        <section id="signature-bhxy2">
+            <h2>Game drawing</h2>
+            <div class="scroll-container">
+                <article>
+                    <h3>Karin</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao4.jpg" alt="" />
+                    <p>Honkai Impact 2 new main character</p>
+                </article>
+
+                <article>
+                    <h3>New Story</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao5.jpg" alt="" />
+                    <p>New story line</p>
+                </article>
+
+                <article>
+                    <h3>Protagonist group</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao6.jpg" alt="" />
+                    <p>The main characters of the new story</p>
+                </article>
+
+                <article>
+                    <h3>Protagonist group</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao7.jpg" alt="" />
+                    <p>The main characters of the new story</p>
+                </article>
+
+                <article>
+                    <h3>Mid-Autumn Festival</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao8.jpg" alt="" />
+                    <p>Mid-Autumn Festival greetings</p>
+                </article>
+
+                <article>
+                    <h3>Protagonist group</h3>
+                    <img style="width:100%" src="~/Content/jieshao/jieshao9.jpg" alt="" />
+                    <p>The main characters of the new story</p>
+                </article>
+            </div>
+        </section>
+
+        <footer>
+            <p>版权所有 © 2023 崩坏学园2. 保留所有权利。</p>
+        </footer>
+
+</body>
+</html>
